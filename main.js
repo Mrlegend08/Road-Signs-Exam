@@ -4,17 +4,17 @@ const elCompleted = document.querySelector(".js-answer-count");
 const elTime = document.querySelector(".js-time");
 const elCorrect = document.querySelector(".js-correct");
 const iwla = document.querySelector(".js-uncorrect-final");
+const elUncorrect = document.querySelector(".js-uncorrect");
 let savolCounter = 1;
 let javobCounter = 0;
 let foraCount = 5;
 let correctAnswer = 0;
+let uncorrectAnswer = 0;
 const elAudioLose = document.querySelector("#lose");
 const elAudioWin = document.querySelector("#win");
 const elAudioPass = document.querySelector("#pass");
 const elAudioFail = document.querySelector("#fail");
-
 let arr = [];
-
 function foraCountFunction(count) {
   document.querySelector(".js-fora").textContent = `${count} ta`;
 }
@@ -32,6 +32,9 @@ function jsAnswerCounter(son) {
 }
 function jsCorrectFunction(son) {
   elCorrect.textContent = son;
+}
+function jsUnorrectFunction(son) {
+  elUncorrect.textContent = son;
 }
 function greenBtn(ind) {
   correctAnswer++;
@@ -63,6 +66,8 @@ function greenBtn(ind) {
   }
 }
 function redBtn(ind) {
+  uncorrectAnswer++;
+  jsUnorrectFunction(uncorrectAnswer);
   let number = Math.floor(Math.random() * 90 + 1);
   if (!arr.includes(number)) {
     elAudioFail.play();
@@ -116,7 +121,6 @@ function testRender(symbols) {
     }
   });
 }
-
 function timeRender(time) {
   minut = `0${time}`;
   secund = 00;
@@ -162,6 +166,7 @@ document.querySelectorAll(".blur-btns").forEach((value) => {
     savolRaqami(savolCounter);
     jsAnswerCounter(javobCounter);
     jsCorrectFunction(correctAnswer);
+    jsUnorrectFunction(uncorrectAnswer);
     timeRender(value.textContent[value.textContent.length - 7]);
   });
 });
