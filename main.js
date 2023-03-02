@@ -46,19 +46,21 @@ function greenBtn(ind) {
     elBtns.forEach((btn, index) => {
       if (index === ind) {
         btn.style.border = "1px solid green";
+        btn.classList.add("disabled");
         setTimeout(() => {
           btn.style.border = "1px solid rgb(184, 184, 184)";
           testRender(roadSymbol.slice(number, number + 3));
           savolCounter++;
+          btn.classList.remove("disabled");
           javobCounter++;
           savolRaqami(savolCounter);
           jsAnswerCounter(javobCounter);
-        }, 1000);
+        }, 750);
       } else {
         btn.classList.add("disabled");
         setTimeout(() => {
           btn.classList.remove("disabled");
-        }, 1000);
+        }, 750);
       }
     });
   } else {
@@ -74,11 +76,14 @@ function redBtn(ind) {
     arr.push(number);
     elBtns.forEach((btn, index) => {
       if (index === ind) {
+        btn.classList.add("disabled");
         btn.style.border = "1px solid red";
         setTimeout(() => {
           btn.style.border = "1px solid rgb(184, 184, 184)";
           testRender(roadSymbol.slice(number, number + 3));
           savolCounter++;
+          btn.classList.remove("disabled");
+
           javobCounter++;
           foraCount--;
           savolRaqami(savolCounter);
@@ -91,12 +96,12 @@ function redBtn(ind) {
             console.log(document.querySelector(".js-uncorrect-final"));
             elAudioLose.play();
           }
-        }, 1000);
+        }, 750);
       } else {
         btn.classList.add("disabled");
         setTimeout(() => {
           btn.classList.remove("disabled");
-        }, 1000);
+        }, 750);
       }
     });
   } else {
