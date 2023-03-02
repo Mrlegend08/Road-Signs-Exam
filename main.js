@@ -116,6 +116,7 @@ function testRender(symbols) {
     }
   });
 }
+
 function timeRender(time) {
   minut = `0${time}`;
   secund = 00;
@@ -123,13 +124,9 @@ function timeRender(time) {
   elTime.textContent = vaqt;
   setInterval(() => {
     if (secund == 00 || secund == 0) {
-      secund = 60;
-      secund--;
       time = Number(time) - 1;
-      minut = `0${time}`;
-      vaqt = `${minut}:${secund}`;
-      elTime.textContent = vaqt;
-      if (minut == 00 && secund == 0) {
+      console.log(time, secund)
+      if (elTime.textContent == "00:0") {
         document.querySelector(".tests").classList.add("d-none");
         document.querySelector(".gameOver").classList.remove("d-none");
         document.querySelector(".js-uncorrect-final").textContent =
@@ -137,12 +134,17 @@ function timeRender(time) {
         console.log(document.querySelector(".js-uncorrect-final"));
         elAudioLose.play();
       }
+      secund = 60;
+      secund--;
+      minut = `0${time}`;
+      vaqt = `${minut}:${secund}`;
+      elTime.textContent = vaqt;
     } else {
       secund--;
       vaqt = `${minut}:${secund}`;
       elTime.textContent = vaqt;
     }
-  }, 1000);
+  }, 100);
 }
 document.querySelectorAll(".blur-btns").forEach((value) => {
   value.addEventListener("click", () => {
