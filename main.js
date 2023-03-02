@@ -144,7 +144,7 @@ function timeRender(time) {
       vaqt = `${minut}:${secund}`;
       elTime.textContent = vaqt;
     }
-  }, 100);
+  }, 1000);
 }
 document.querySelectorAll(".blur-btns").forEach((value) => {
   value.addEventListener("click", () => {
